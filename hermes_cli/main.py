@@ -450,6 +450,7 @@ from hermes_cli.subcommands.dump import build_dump_parser
 from hermes_cli.subcommands.debug import build_debug_parser
 from hermes_cli.subcommands.backup import build_backup_parser
 from hermes_cli.subcommands.import_cmd import build_import_cmd_parser
+from hermes_cli.subcommands.import_agent import build_import_agent_parser
 from hermes_cli.subcommands.config import build_config_parser
 from hermes_cli.subcommands.skin import build_skin_parser
 from hermes_cli.subcommands.console import build_console_parser
@@ -16336,6 +16337,15 @@ def main():
     # import command  (parser built in hermes_cli/subcommands/import_cmd.py)
     # =========================================================================
     build_import_cmd_parser(subparsers, cmd_import=cmd_import)
+
+    # =========================================================================
+    # import-agent command  (parser: hermes_cli/subcommands/import_agent.py)
+    # =========================================================================
+    def cmd_import_agent(args):
+        from hermes_cli.agent_import import import_agent_command
+        import_agent_command(args)
+
+    build_import_agent_parser(subparsers, cmd_import_agent=cmd_import_agent)
 
     # =========================================================================
     # config command  (parser built in hermes_cli/subcommands/config.py)
